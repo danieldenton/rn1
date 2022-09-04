@@ -1,5 +1,4 @@
 import { StyleSheet, View, TextInput, Button, Modal } from "react-native";
-import splitLayoutProps from "react-native/Libraries/StyleSheet/splitLayoutProps";
 
 export default function GoalInput({
   addGoalHandler,
@@ -17,9 +16,13 @@ export default function GoalInput({
           onChangeText={goalInputHandler}
           value={enteredGoalText}
         />
-        <View>
-          <Button title="Add Goal" onPress={addGoalHandler} />
-          <Button title="Cancel" onPress={cancelGoalHandler} />
+        <View style={styles.buttonContainer}>
+          <View style={styles.addButton}>
+            <Button title="Add Goal" onPress={addGoalHandler} color="#5e0acc" />
+          </View>
+          <View style={styles.cancelButton}>
+            <Button title="Cancel" onPress={cancelGoalHandler} color="red" />
+          </View>
         </View>
       </View>
     </Modal>
@@ -28,18 +31,29 @@ export default function GoalInput({
 
 const styles = StyleSheet.create({
   inputContainer: {
+    paddingTop: 350,
     justifyContent: "space-between",
     alignItems: "center",
     paddingBottom: 24,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
-    flex: 1,
   },
   textIn: {
     borderWidth: 1,
-    borderColor: "red",
-    width: "70%",
+    borderColor: "black",
+    borderRadius: 5,
+    width: "80%",
     marginRight: 8,
-    padding: 8,
+    padding: 15,
+  },
+  buttonContainer: {
+    margin: 20,
+  },
+  addButton: {
+    margin: 10,
+    color: "#5e0acc",
+  },
+  cancelButton: {
+    margin: 5,
   },
 });

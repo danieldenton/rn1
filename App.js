@@ -27,6 +27,7 @@ export default function App() {
       { text: enteredGoalText, id: Math.random().toString() },
     ]);
     setEnteredGoalText("");
+    setModalIsVisible(false);
   }
 
   function handleDelete(id) {
