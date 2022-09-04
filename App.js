@@ -15,16 +15,31 @@ const [courseGoals, setCourseGoals] = useState([])
     setCourseGoals(currentCourseGoals => [...currentCourseGoals,
       { text: enteredGoalText, id: Math.random().toString() }
     ])
+    setEnteredGoalText('')
+  }
+
+  function handleDelete(id) {
+    setCourseGoals(currentCourseGoals => {
+      return currentCourseGoals.filter((goal) => goal.id !== id)
+    })
   }
 
   return (
     <View style={styles.appContainer}>
-     <GoalInput addGoalHandler={addGoalHandler} goalInputHandler={goalInputHandler} />
+     <GoalInput 
+     addGoalHandler={addGoalHandler} 
+     goalInputHandler={goalInputHandler}
+     enteredGoalText={enteredGoalText}
+     />
      <View style={styles.goalsContainer}>
       <FlatList 
         data={courseGoals} 
         renderItem={(itemData) => { 
-          return <GoalItem text={itemData.item.text}/>
+          return <GoalItem 
+          text={itemData.item.text} 
+          handleDelete={handleDelete}
+          id={itemData.item.id}
+          />
         }}
         keyExtractor={(item, index) => {
           return item.id
@@ -40,23 +55,7 @@ const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
    paddingTop: 60,
-   paddingHorizontal: 16
-  },  
-  inputContainer: {
-    flexDirection: 'row', 
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
-    flex: 1
-  },
-  textIn: {
-    borderWidth: 1,
-    borderColor: 'red',
-    width: '80%',
-    marginRight: 8,
-    padding: 8
+   paddingHorizontal: 26
   },
   goalsContainer: {
     flex: 5,

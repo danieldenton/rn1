@@ -1,13 +1,14 @@
 import { StyleSheet, View, TextInput, Button } from "react-native";
-import { useState } from "react";
 
-export default function GoalInput({ addGoalHandler, goalInputHandler}) {
+export default function GoalInput({ addGoalHandler, goalInputHandler, enteredGoalText}) {
     
     return (
      <View style={styles.inputContainer}>
       <TextInput style={styles.textIn} 
       placeholder='Your course goal' 
-      onChangeText={goalInputHandler}/>
+      onChangeText={goalInputHandler}
+      value={enteredGoalText}
+      />
       <Button title='Add Goal' onPress={addGoalHandler}/>
      </View>
     )
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
       textIn: {
         borderWidth: 1,
         borderColor: 'red',
-        width: '80%',
+        width: '70%',
         marginRight: 8,
         padding: 8
       },
