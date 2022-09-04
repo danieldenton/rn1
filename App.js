@@ -39,8 +39,8 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <Button
-        title="Add new goal"
-        color="#5e0acc"
+        title="Add New Goal"
+        color="black"
         onPress={startAddGoalHandler}
       />
       {modalIsVisible && (
@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 26,
   },
   goalsContainer: {
-    flex: 5,
-    borderWidth: 1,
-    borderColor: "red",
+    marginTop: 10,
+    marginBottom: 20,
+    flex: 2,
   },
 });
